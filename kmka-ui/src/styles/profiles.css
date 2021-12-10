@@ -1,0 +1,65 @@
+/* people section */
+
+.profile-card {
+	margin: auto;
+	text-align: center;
+	display: flex;
+	flex-direction: row;
+	text-align: left;
+	padding: 25px;
+}
+
+.profile-card img {
+	height: 200px;
+	border-radius: 50%;
+	margin-right: 30px;
+	margin-left: 5px;
+}
+
+.profile-card p {
+	padding: 0;
+}
+
+.profile-card h3 {
+	margin-top: 15px;
+	text-align: left;
+}
+
+.profile-text {
+	margin-top: 5px;
+}
+
+.profile-subtext {
+	/* font-size: 14px;
+	font-weight: 300; */
+}
+
+/* phones */
+@media (max-width: 700px) {
+	.profile-card img {
+		height: 200px;
+		width: 200px;
+		border-radius: 50%;
+		margin-left: auto;
+	}
+
+	.profile-card {
+		flex-direction: column;
+	}
+
+	.profile-card h3 {
+		text-align: center;
+		margin-top: 15px !important;
+	}
+
+	.profile-card p {
+		text-align: justify;
+	}
+}
+
+/* tablets */
+@media (max-width: 1264px) {
+	.profile-card h3 {
+		margin-top: 0px;
+	}
+}
