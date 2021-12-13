@@ -76,12 +76,16 @@
 	color: white;
 }
 
-.intro-section button {
+.btn-contact {
+	display: inline-block;
+	text-decoration: none;
 	color: #fff !important;
 	border: 1px solid #fff;
+	padding: 8px 14px;
+	border-radius: 4px;
 }
 
-.intro-section button:hover {
+.btn-contact:hover {
 	border: 1px solid #f44336;
 	background: #f44336;
 	transition: 0.5s;

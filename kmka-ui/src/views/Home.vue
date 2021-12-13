@@ -9,9 +9,7 @@
 					for diversified clients in India. <br />ICAI Peer Review certificate
 					number - 011319.
 				</p>
-				<v-btn outlined @click="navigate('contact')"
-					>Contact Us To Know More</v-btn
-				>
+				<a href="#contact" class="btn-contact">Contact Us To Know More</a>
 			</section>
 		</section>
 		<!-- Services -->
@@ -380,9 +378,6 @@ export default {
 			this.email = "";
 			this.purpose = null;
 			this.$refs.observer.reset();
-		},
-		navigate(section) {
-			document.location += `${section}`;
 		},
 	},
 };
