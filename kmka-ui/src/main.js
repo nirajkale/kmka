@@ -4,6 +4,7 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
 import './styles/main.css'
+import './styles/contacts.css'
 import './styles/profiles.css'
 
 Vue.config.productionTip = false

@@ -29,9 +29,39 @@
 	margin-top: 5px;
 }
 
+.profile-into h4 {
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid #000;
+	line-height: 0.1em;
+	margin: 25px 0 20px;
+}
+
+.profile-into h4 span {
+	background: #fff;
+	padding: 0 10px;
+}
+
 .profile-subtext {
 	/* font-size: 14px;
 	font-weight: 300; */
+}
+
+.team-photo {
+	height: 500px;
+	margin: 5px 20px;
+}
+
+/* tablets */
+@media (max-width: 1264px) {
+	.profile-card h3 {
+		margin-top: 0px;
+	}
+
+	.team-photo {
+		height: 400px;
+		/* margin: 5px 20px; */
+	}
 }
 
 /* phones */
@@ -55,11 +85,9 @@
 	.profile-card p {
 		text-align: justify;
 	}
-}
 
-/* tablets */
-@media (max-width: 1264px) {
-	.profile-card h3 {
-		margin-top: 0px;
+	.team-photo {
+		height: 200px;
+		/* margin: 5px 20px; */
 	}
 }

@@ -1,0 +1,51 @@
+.contact-layout {
+	display: flex;
+	flex-direction: row;
+	margin: 25px 100px;
+}
+
+.contact-physical {
+	text-align: left;
+	width: 50%;
+}
+
+.contact-website {
+	width: 50%;
+}
+
+.form-submit {
+	text-align: left;
+}
+
+.form-submit button {
+	border: 1px solid black;
+}
+
+.form-submit button:hover {
+	color: #fff !important;
+	border: 1px solid #f44336;
+	background: #f44336;
+	transition: 0.5s;
+}
+
+/* phones */
+@media (max-width: 700px) {
+	.contact-layout {
+		flex-direction: column;
+		margin: 5px 0px;
+	}
+
+	.contact-physical {
+		width: 100%;
+	}
+
+	.contact-website {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1264px) {
+	.contact-layout {
+		margin: 25px 0px;
+	}
+}

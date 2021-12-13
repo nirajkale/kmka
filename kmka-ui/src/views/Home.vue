@@ -9,7 +9,9 @@
 					for diversified clients in India. <br />ICAI Peer Review certificate
 					number - 011319.
 				</p>
-				<v-btn outlined>Contact Us To Know More</v-btn>
+				<v-btn outlined @click="navigate('contact')"
+					>Contact Us To Know More</v-btn
+				>
 			</section>
 		</section>
 		<!-- Services -->
@@ -145,11 +147,13 @@
 		<section class="section-container" id="people">
 			<h2>People Behind The Scene</h2>
 			<p>
-				Our team of highly skilled and motivated personnel has gained in-depth
-				experience to provide multitude of services.<br />The partner and all
-				other Professional associates are having requisite experience and
-				expertise in their respective fields.
+				Our team is made with skilled & highly motiviated individuals, who have
+				gained in-depth experience in their respective fields after years of
+				hard work.
 			</p>
+			<div class="profile-into">
+				<h4><span>Meet Our Leaders</span></h4>
+			</div>
 			<div class="profile-card">
 				<img src="@/assets/durgesh.jpeg" alt="" />
 				<div class="profile-text">
@@ -238,18 +242,148 @@
 					</div>
 				</div>
 			</div>
+			<div class="profile-into">
+				<h4><span>Meet The Team</span></h4>
+				<p>
+					A perfect blend of creativity and professional wizardry.The best
+					people formula for great projects!
+				</p>
+				<img class="team-photo" src="@/assets/team.jpg" alt="" />
+			</div>
 		</section>
 		<section class="section-container" id="contact">
 			<h2>Contact Us</h2>
+			<p>
+				You can either reach out to us in one of our offices or give us a call.
+				You can also fill out below form & we'll reach out to you within a
+				bussiness day.
+			</p>
+			<div class="contact-layout">
+				<div class="contact-physical">
+					<h5>Mumbai Office</h5>
+					<p>
+						03, Ratnamani Towers, MMGS Marg,<br />
+						Opp. Dadar Railway Station, Dadar<br />
+						(E),Mumbai - 400014 Contact +919860257457<br />
+						Mail–kmkassociatesca@gmail.com
+					</p>
+					<h5>Nashik Office</h5>
+					<p>
+						Flat No. 1, Aditya Appartment,<br />
+						Above HDFC Bank, Matoshree Nagar, <br />
+						Nashik, Maharashtra 422002
+					</p>
+				</div>
+				<div class="contact-website">
+					<validation-observer ref="observer">
+						<form @submit.prevent="submit">
+							<validation-provider
+								v-slot="{ errors }"
+								name="Name"
+								rules="required|max:100"
+							>
+								<v-text-field
+									v-model="name"
+									:error-messages="errors"
+									label="Name"
+									required
+								></v-text-field>
+							</validation-provider>
+							<validation-provider
+								v-slot="{ errors }"
+								name="phoneNumber"
+								rules="required"
+							>
+								<v-text-field
+									v-model="phoneNumber"
+									:counter="10"
+									:error-messages="errors"
+									label="Phone Number"
+									required
+								></v-text-field>
+							</validation-provider>
+							<validation-provider
+								v-slot="{ errors }"
+								name="email"
+								rules="required"
+							>
+								<v-text-field
+									v-model="email"
+									:error-messages="errors"
+									label="E-mail"
+									required
+								></v-text-field>
+							</validation-provider>
+							<validation-provider
+								v-slot="{ errors }"
+								name="select"
+								rules="required"
+							>
+								<v-select
+									v-model="purpose"
+									:items="items"
+									:error-messages="errors"
+									label="Purpose"
+									required
+								></v-select>
+							</validation-provider>
+							<validation-provider v-slot="{ errors }" name="desc">
+								<v-textarea
+									v-model="desc"
+									:items="items"
+									:error-messages="errors"
+									label="Description"
+									rows="2"
+								>
+								</v-textarea>
+							</validation-provider>
+							<div class="form-submit">
+								<v-btn outlined class="mr-4" type="submit"> submit </v-btn>
+								<v-btn outlined @click="clear"> clear </v-btn>
+							</div>
+						</form>
+					</validation-observer>
+				</div>
+			</div>
 		</section>
 	</div>
 </template>
 
 <script>
+import {
+	ValidationObserver,
+	ValidationProvider,
+	setInteractionMode,
+} from "vee-validate";
+
+setInteractionMode("eager");
+
 export default {
-	name: "Home",
+	components: { ValidationObserver, ValidationProvider },
 	data() {
-		return {};
+		return {
+			name: "",
+			phoneNumber: "",
+			email: "",
+			purpose: null,
+			desc: "",
+			items: ["Service Inquiry", "Need Help", "Existing Client", "Other"],
+		};
+	},
+	methods: {
+		submit() {
+			this.$refs.observer.validate();
+		},
+		clear() {
+			this.name = "";
+			this.phoneNumber = "";
+			this.email = "";
+			this.purpose = null;
+			this.$refs.observer.reset();
+		},
+		navigate(section) {
+			document.location += `${section}`;
+		},
 	},
 };
 </script>

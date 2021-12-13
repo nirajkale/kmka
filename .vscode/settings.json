@@ -1,0 +1,12 @@
+{
+    "editor.formatOnPaste": true,
+    "[vue]": {
+        "editor.tabSize": 2
+    },
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[vue-html]": {
+        "editor.autoIndent": "advanced"
+    }
+}
