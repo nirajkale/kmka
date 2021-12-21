@@ -1,7 +1,11 @@
 {
     "editor.formatOnPaste": true,
     "[vue]": {
-        "editor.tabSize": 2
+        "editor.tabSize": 2,
+        "editor.suggest.showVariables": true,
+        "editor.insertSpaces": true,
+        "editor.defaultFormatter": "yoyo930021.vuter",
+        "editor.formatOnSave": true
     },
     "[javascript]": {
         "editor.tabSize": 2

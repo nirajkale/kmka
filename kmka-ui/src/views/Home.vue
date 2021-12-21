@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="header" id="home">
+		<section class="header" id="home" ref="home">
 			<section class="intro-section">
 				<h1>Karwa Malani Kalantri</h1>
 				<h5>& Associates</h5>
@@ -13,7 +13,7 @@
 			</section>
 		</section>
 		<!-- Services -->
-		<section class="section-container" id="services">
+		<section class="section-container" id="services" ref="services">
 			<h2>Services We Offer</h2>
 			<p>
 				Our practice areas are Auditing, Assurance, Financial Instituion Audits,
@@ -114,7 +114,7 @@
 			</v-row>
 		</section>
 		<!-- about us -->
-		<section class="section-container" id="about">
+		<section class="section-container" id="about" ref="about">
 			<h2>About Us</h2>
 			<p>
 				One of the fastest growing chartered accountant firm in india with ever
@@ -142,7 +142,7 @@
 			</div>
 		</section>
 		<!-- about us -->
-		<section class="section-container" id="people">
+		<section class="section-container" id="people" ref="people">
 			<h2>People Behind The Scene</h2>
 			<p>
 				Our team is made with skilled & highly motiviated individuals, who have
@@ -249,7 +249,7 @@
 				<img class="team-photo" src="@/assets/team.jpg" alt="" />
 			</div>
 		</section>
-		<section class="section-container" id="contact">
+		<section class="section-container" id="contact" ref="contact">
 			<h2>Contact Us</h2>
 			<p>
 				You can either reach out to us in one of our offices or give us a call.
@@ -368,7 +368,18 @@ export default {
 			items: ["Service Inquiry", "Need Help", "Existing Client", "Other"],
 		};
 	},
+  mounted(){
+    this.$store.commit("useDarkTheme", true);
+    let section = this.$route.query.section;
+    if(section!=undefined && section!=''){
+      this.scrollTo(section);
+    }
+  },
 	methods: {
+    scrollTo(section){
+      var element = this.$refs[section];
+      element.scrollIntoView({ behavior: 'smooth' });
+    },
 		submit() {
 			this.$refs.observer.validate();
 		},
