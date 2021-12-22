@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import authentication from './authentication'
 import users from './users';
+import inquiries from './inquiries';
 import { APIClient } from './axio-api';
 import router from '../router'
 
@@ -31,7 +32,8 @@ const store = new Vuex.Store({
   },
   modules: {
     authentication,
-    users
+    users,
+    inquiries
   }
 })
 

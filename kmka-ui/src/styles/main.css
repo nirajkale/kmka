@@ -224,6 +224,10 @@
 	bottom: 10%;
 }
 
+.link-button {
+	background-color: #f1f1f1;
+}
+
 /* responsive stuff */
 
 @media (max-width: 1150px) {

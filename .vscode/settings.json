@@ -12,5 +12,5 @@
     },
     "[vue-html]": {
         "editor.autoIndent": "advanced"
-    }
+    },
 }

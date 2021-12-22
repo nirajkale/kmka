@@ -65,6 +65,12 @@
           </v-list-item-icon>
           <v-list-item-title>Download Profile Brouchure</v-list-item-title>
         </v-list-item>
+        <v-list-item link :to="{ name: 'inquiries' }" v-if="isAuthenticated">
+          <v-list-item-icon>
+            <v-icon>mdi-help-box</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Manage Inquiries</v-list-item-title>
+        </v-list-item>
         <v-list-item link :to="{ name: 'users' }" v-if="isAuthenticated">
           <v-list-item-icon>
             <v-icon>mdi-account-supervisor</v-icon>

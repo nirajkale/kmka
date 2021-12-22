@@ -4,19 +4,26 @@ import vuetify from './plugins/vuetify'
 import router from './router'
 import store from './store'
 import { ValidationProvider, extend } from 'vee-validate';
-import { required } from 'vee-validate/dist/rules';
+import { required, max } from 'vee-validate/dist/rules';
 import VTooltip from "v-tooltip";
 import './styles/tooltip.css'
 import './styles/main.css'
 import './styles/contacts.css'
 import './styles/profiles.css'
+import { localdatetime_fn } from './filters'
 
 Vue.config.productionTip = false
 Vue.use(VTooltip);
+Vue.filter('localdatetime', localdatetime_fn)
 
 extend('required', {
   ...required,
   message: 'This field is required'
+});
+
+extend('max', {
+  ...max,
+  message: 'Max allowed character count exceeded'
 });
 
 new Vue({

@@ -13,6 +13,9 @@ export function prepareURL(baseUrl, options) {
     if (options.search != null && options.search.length > 0) {
         baseUrl += `&search=${options.search}`;
     }
+    if (options.type != null && options.type.length > 0) {
+        baseUrl += `&type=${options.type}`;
+    }
     if (baseUrl[baseUrl.length - 1] == '?') baseUrl = baseUrl.slice(0, baseUrl.length - 1);
     return baseUrl
 }

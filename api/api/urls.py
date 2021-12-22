@@ -20,4 +20,5 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/users/', include(('user.urls', 'user'), namespace='user')),
+    url(r'^api/inquiries/', include(('inquiry.urls', 'inquiry'), namespace='inquiry')),
 ]

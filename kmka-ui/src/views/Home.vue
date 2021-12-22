@@ -281,7 +281,7 @@
 								rules="required|max:100"
 							>
 								<v-text-field
-									v-model="name"
+									v-model="inquiry.name"
 									:error-messages="errors"
 									label="Name"
 									required
@@ -289,11 +289,11 @@
 							</validation-provider>
 							<validation-provider
 								v-slot="{ errors }"
-								name="phoneNumber"
+								name="phoneNumber|max:10"
 								rules="required"
 							>
 								<v-text-field
-									v-model="phoneNumber"
+									v-model="inquiry.phone"
 									:counter="10"
 									:error-messages="errors"
 									label="Phone Number"
@@ -306,7 +306,7 @@
 								rules="required"
 							>
 								<v-text-field
-									v-model="email"
+									v-model="inquiry.email"
 									:error-messages="errors"
 									label="E-mail"
 									required
@@ -318,7 +318,7 @@
 								rules="required"
 							>
 								<v-select
-									v-model="purpose"
+									v-model="inquiry.purpose"
 									:items="items"
 									:error-messages="errors"
 									label="Purpose"
@@ -327,7 +327,7 @@
 							</validation-provider>
 							<validation-provider v-slot="{ errors }" name="desc">
 								<v-textarea
-									v-model="desc"
+									v-model="inquiry.desc"
 									:items="items"
 									:error-messages="errors"
 									label="Description"
@@ -336,7 +336,7 @@
 								</v-textarea>
 							</validation-provider>
 							<div class="form-submit">
-								<v-btn outlined class="mr-4" type="submit"> submit </v-btn>
+								<v-btn outlined class="mr-4" type="submit" :loading="loading"> submit </v-btn>
 								<v-btn outlined @click="clear"> clear </v-btn>
 							</div>
 						</form>
@@ -360,11 +360,14 @@ export default {
 	components: { ValidationObserver, ValidationProvider },
 	data() {
 		return {
-			name: "",
-			phoneNumber: "",
-			email: "",
-			purpose: null,
-			desc: "",
+      loading: false,
+			inquiry: {
+        name: "",
+        phone: "",
+        email: "",
+        purpose: null,
+        desc: "",
+      },
 			items: ["Service Inquiry", "Need Help", "Existing Client", "Other"],
 		};
 	},
@@ -380,15 +383,37 @@ export default {
       var element = this.$refs[section];
       element.scrollIntoView({ behavior: 'smooth' });
     },
+    clear(){
+      this.inquiry = {
+        name: "",
+        phone: "",
+        email: "",
+        purpose: null,
+        desc: "",
+      };
+    },
 		submit() {
-			this.$refs.observer.validate();
-		},
-		clear() {
-			this.name = "";
-			this.phoneNumber = "";
-			this.email = "";
-			this.purpose = null;
-			this.$refs.observer.reset();
+			this.loading = true;
+			this.$store
+				.dispatch("createInquiry", this.inquiry)
+				.then(() => {
+					this.clear();
+					this.$store.commit(
+						"showNotification",
+						"Your inquiry is successfully submitted"
+					);
+				})
+				.catch((err) => {
+					console.log(err);
+					if (err.response.status == 400) {
+						this.$refs.observer.setErrors(err.response.data);
+					} else {
+						this.$store.commit("showNotification", "Something went wrong");
+					}
+				})
+				.finally(() => {
+					this.loading = false;
+				});
 		},
 	},
 };

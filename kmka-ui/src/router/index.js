@@ -4,6 +4,8 @@ import Home from '../views/Home.vue'
 import MasterLayout from '../master/Master.vue'
 import Login from '../views/Login.vue'
 import Users from '../views/Users.vue'
+import Inquiries from '../views/Inquiries.vue'
+import Inquiry from '../views/Inquiry.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,16 @@ const routes = [
         path: '/users',
         name: 'users',
         component: Users
+        },
+        {
+        path: '/inquiries',
+        name: 'inquiries',
+        component: Inquiries
+        },
+        {
+        path: '/inquiries/:id',
+        name: 'inquiry',
+        component: Inquiry
         },
     ]
   },
