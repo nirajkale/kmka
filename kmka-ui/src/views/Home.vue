@@ -9,7 +9,8 @@
 					for diversified clients in India. <br />ICAI Peer Review certificate
 					number - 011319.
 				</p>
-				<a href="#contact" class="btn-contact">Contact Us To Know More</a>
+				<!-- <a href="#contact" class="btn-contact">Scroll Down For More Details</a> -->
+        <router-link class="btn-contact" link :to="{ path: 'home', query: { section: 'services' }}">Scroll Down For Details</router-link>
 			</section>
 		</section>
 		<!-- Services -->
@@ -20,7 +21,7 @@
 				Financial Services,<br />
 				Project Financing, Subsidy Projects, Taxation & Book Keeping
 			</p>
-			<v-row>
+			<v-row class="service-row">
 				<v-col cols="4" sm="12" md="6" lg="4" xl="4">
 					<v-card class="service-col" elevation="2">
 						<h3>Auditing and Assurance</h3>
@@ -32,7 +33,7 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'audit-assurance' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
@@ -47,7 +48,7 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'fin-audits' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
@@ -62,7 +63,7 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'fin-subsidy' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
@@ -77,7 +78,7 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'taxation' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
@@ -92,7 +93,7 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'book-keeping' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
@@ -107,11 +108,13 @@
 							survived not only five centuries.
 						</p>
 						<div class="service-action-items">
-							<v-btn text color="#f44336"> Learn More </v-btn>
+							<v-btn text color="#f44336" link :to="{ name: 'services', query: { section: 'company-law' } }"> Learn More </v-btn>
 						</div>
 					</v-card>
 				</v-col>
 			</v-row>
+      <p class="approach-segway">If you want more details about we provide above services, checkout 
+        <router-link :to="{ path: 'approach'}">Our Approach To An Assignment</router-link></p>
 		</section>
 		<!-- about us -->
 		<section class="section-container" id="about" ref="about">
@@ -348,6 +351,7 @@
 </template>
 
 <script>
+
 import {
 	ValidationObserver,
 	ValidationProvider,

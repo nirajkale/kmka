@@ -59,7 +59,7 @@
           </v-list-item-icon>
           <v-list-item-title>Contact</v-list-item-title>
         </v-list-item>
-        <v-list-item>
+        <v-list-item @click="downloadBrochure()">
           <v-list-item-icon>
             <v-icon>mdi-download</v-icon>
           </v-list-item-icon>
@@ -122,6 +122,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Snackbar from "../components/Snackbar.vue";
+import { saveAs } from "file-saver";
 
 export default {
 	name: "Master",
@@ -163,7 +164,16 @@ export default {
     jumpTo(section){
       window.location.hash = section;
       this.drawer = false;
-    }
+    },
+    downloadBrochure() {
+			this.$store
+      .dispatch("downloadBrochure")
+      .then((data) => {
+        console.log(data.length)
+        var blob = new Blob([data], {type: "application/pdf"});
+        saveAs(blob, 'KMKA Brochure.pdf');
+      })
+		},
 	},
 };
 </script>

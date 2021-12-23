@@ -1,0 +1,33 @@
+.approach {
+	width: 90%;
+	margin: auto;
+}
+
+.approach p {
+	margin-top: 10px;
+	margin-right: 25%;
+}
+
+.approach ul {
+	margin-top: 10px;
+}
+
+.approach li {
+	font-weight: 300;
+}
+
+@media (max-width: 1150px) {
+	.approach {
+		width: 90%;
+	}
+
+	.approach p {
+		margin-right: 0%;
+		text-align: justify;
+		text-justify: inter-word !important;
+	}
+
+	.approach h2 {
+		font-size: 20px;
+	}
+}

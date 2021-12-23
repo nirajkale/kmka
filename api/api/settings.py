@@ -17,6 +17,7 @@ logger = logging.getLogger('django')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +31,7 @@ TOKEN_SECRET_KEY = 'odMnL8dx02xMfpv0_AwQ5aRxBKoA1Hfwjwp_bUX8ZGQ='
 DEBUG = os.environ.get('DEBUG', 'true').lower().strip() == 'true'
 logger.info('DJANGO DEBUG Mode:', DEBUG)
 
-ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS', '192.168.29.66')
+ALLOWED_HOSTS_ENV = os.environ.get('ALLOWED_HOSTS', '192.168.29.66,192.168.0.101')
 ALLOWED_HOSTS = [host.strip()for host in ALLOWED_HOSTS_ENV.split(',') if host.strip()]
 
 

@@ -65,6 +65,13 @@ const actions = {
       });
     });
   },
+  downloadBrochure({ rootGetters },){
+    return new Promise((resolve, reject)=>{
+      APIClient.get('inquiries/download-brochure',
+      rootGetters.getAuthHeaders)
+      .then((response) => resolve(response.data)).catch(()=> reject());
+    })
+  }
 }
 
 export default {

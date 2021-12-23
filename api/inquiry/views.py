@@ -1,13 +1,18 @@
+from os import read
 from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
 from rest_framework.filters import SearchFilter, OrderingFilter
-
+from django.http.response import HttpResponse
 from .models import Inquiry
 from .serializers import (InquiryCreateSerializer, InquirySerializer, InquiryPatchSerializer)
 from rest_framework.response import Response
 from rest_framework import status
+from utils.io import read_safe
+from api.settings import MEDIA_DIR
+from os import path
+from rest_framework.decorators import api_view
 
 class InquiryListCreateAPIView(ListCreateAPIView):
 
@@ -56,3 +61,10 @@ class InquiryRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
             serializer.save(update_fields=["acknowledged"])
             return Response({}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(["GET"]) 
+def download_brouchre(request):
+    bytes = read_safe(path.join(MEDIA_DIR, 'KMK Profile.pdf'))
+    response = HttpResponse(bytes, content_type="application/pdf")
+    response['Content-Disposition'] = 'inline; filename=KMK Profile.pdf'
+    return response

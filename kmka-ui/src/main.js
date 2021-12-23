@@ -8,8 +8,11 @@ import { required, max } from 'vee-validate/dist/rules';
 import VTooltip from "v-tooltip";
 import './styles/tooltip.css'
 import './styles/main.css'
+import './styles/services.css'
 import './styles/contacts.css'
 import './styles/profiles.css'
+import './styles/approach.css'
+
 import { localdatetime_fn } from './filters'
 
 Vue.config.productionTip = false

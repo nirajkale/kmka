@@ -1,0 +1,38 @@
+.services-intro {
+	width: 90%;
+	margin: auto;
+}
+
+.services-intro h2 {
+	font-size: 36px;
+	font-weight: 600;
+}
+
+.services-intro p {
+	font-weight: 300;
+}
+
+.service-container {
+	width: 85%;
+	margin: auto;
+	padding-top: 50px;
+}
+
+.service-container h3 {
+	margin: 15px 5px;
+	font-size: 23px;
+}
+
+.service-container li {
+	margin-top: 2px;
+}
+
+@media (max-width: 1150px) {
+	.services-intro h2 {
+		font-size: 24px;
+	}
+
+	.service-container h3 {
+		font-size: 22px;
+	}
+}

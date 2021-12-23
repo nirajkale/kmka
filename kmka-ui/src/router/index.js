@@ -6,6 +6,8 @@ import Login from '../views/Login.vue'
 import Users from '../views/Users.vue'
 import Inquiries from '../views/Inquiries.vue'
 import Inquiry from '../views/Inquiry.vue'
+import Services from '../views/Services.vue'
+import Approach from '../views/Approach.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,16 @@ const routes = [
         name: 'inquiry',
         component: Inquiry
         },
+        {
+        path: '/services',
+        name: 'services',
+        component: Services
+        },
+        {
+        path: '/approach',
+        name: 'approach',
+        component: Approach
+        }
     ]
   },
   {
@@ -44,7 +56,13 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  scrollBehavior (to) {
+    if(to.query.section == undefined)
+    {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {
